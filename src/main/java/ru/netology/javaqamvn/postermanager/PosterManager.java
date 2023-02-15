@@ -15,7 +15,7 @@ public class PosterManager {
     public void add(String movie) {
         String[] tmp = new String[movies.length + 1];
         for (int i = 0; i < movies.length; i++) {
-            tmp[i] = movies [i];
+            tmp[i] = movies[i];
         }
         tmp[tmp.length - 1] = movie;
         movies = tmp;
@@ -28,14 +28,14 @@ public class PosterManager {
     public String[] findLast() {
         int allLength;
         if (movies.length < limit) {
-            allLength = movies.length;}
-            else {
-                allLength = limit;
-            }
+            allLength = movies.length;
+        } else {
+            allLength = limit;
+        }
         String[] tmp = new String[allLength];
         for (int i = 0; i < tmp.length; i++) {
             tmp[i] = movies[movies.length - 1 - i];
-            
+
         }
         return tmp;
     }

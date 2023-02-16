@@ -46,7 +46,7 @@ public class PosterManagerTest {
         PosterManager manager = new PosterManager(0);
 
         String[] expected = {};
-        String[] actual = manager.findAll();
+        String[] actual = manager.findLast();
 
         Assertions.assertArrayEquals(expected, actual);
     }
@@ -133,5 +133,84 @@ public class PosterManagerTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
+    @Test
+    public void testFindAllNull() {
+        PosterManager manager = new PosterManager();
+
+        String[] expected = {};
+        String[] actual = manager.findAll();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void testFindAllLessLimit() {
+        PosterManager manager = new PosterManager(5);
+
+        manager.add("Movie 1");
+        manager.add("Movie 2");
+        manager.add("Movie 3");
+        manager.add("Movie 4");
+
+        String[] expected = {"Movie 1", "Movie 2", "Movie 3", "Movie 4"};
+        String[] actual = manager.findAll();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void testFindAllNewLimit() {
+        PosterManager manager = new PosterManager(20);
+
+        manager.add("Movie 1");
+        manager.add("Movie 2");
+        manager.add("Movie 3");
+        manager.add("Movie 4");
+        manager.add("Movie 5");
+        manager.add("Movie 6");
+        manager.add("Movie 7");
+        manager.add("Movie 8");
+        manager.add("Movie 9");
+        manager.add("Movie 10");
+        manager.add("Movie 11");
+        manager.add("Movie 12");
+        manager.add("Movie 13");
+        manager.add("Movie 14");
+        manager.add("Movie 15");
+        manager.add("Movie 16");
+        manager.add("Movie 17");
+        manager.add("Movie 18");
+        manager.add("Movie 19");
+        manager.add("Movie 20");
+
+        String[] expected = {"Movie 1", "Movie 2", "Movie 3", "Movie 4", "Movie 5", "Movie 6", "Movie 7", "Movie 8", "Movie 9", "Movie 10", "Movie 11", "Movie 12", "Movie 13", "Movie 14", "Movie 15", "Movie 16", "Movie 17", "Movie 18", "Movie 19", "Movie 20"};
+        String[] actual = manager.findAll();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void testFindAllOverLimit() {
+        PosterManager manager = new PosterManager(8);
+
+        manager.add("Movie 1");
+        manager.add("Movie 2");
+        manager.add("Movie 3");
+        manager.add("Movie 4");
+        manager.add("Movie 5");
+        manager.add("Movie 6");
+        manager.add("Movie 7");
+        manager.add("Movie 8");
+        manager.add("Movie 9");
+        manager.add("Movie 10");
+
+        String[] expected = {"Movie 1", "Movie 2", "Movie 3", "Movie 4", "Movie 5", "Movie 6", "Movie 7", "Movie 8", "Movie 9", "Movie 10"};
+        String[] actual = manager.findAll();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+
 }
 
